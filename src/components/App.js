@@ -8,26 +8,26 @@ export default function App() {
   { "id": 2, "name": "producto2", "price": 12.50, "stock": 6 },
   { "id": 3, "name": "producto3", "price": 300.50, "stock": 12 },
 ]
-
  
   const [products, setProducts] = useState([])
   const [productsCart, setProductCart] = useState([])
+  const [totalCarrito, setTotalCarrito] = useState (0)
 
-  useEffect(() => {
+  useEffect(() => { // para consumir la api q voy a hacer con json db
     setProducts(array)
     }, [])
-      
-       
   
   const handleAddCart = (id) => {
   // aqui va a ir toda la logica del cargado del producto al carrito
     const productoACart = products.find(p => p.id === id)
     setProductCart(productsCart.concat(productoACart))
+    
   // unificacion de objetos iguales y suma de un total
+    setTotalCarrito(totalCarrito + productoACart.price)
   //disminucion de stock de porducto
   }
   //console.log(productCart)
-
+ console.log(totalCarrito)
     return (
     <>
           <div>
@@ -35,7 +35,7 @@ export default function App() {
           </div>
           
             <div>
-          <Cart productsCart={productsCart}/>
+          <Cart productsCart={productsCart} totalCarrito={ totalCarrito} />
           </div>
     </>
   )

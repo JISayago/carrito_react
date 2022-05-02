@@ -1,7 +1,8 @@
 import React from 'react'
 
-export default function ProductoInCart ({producto}) {
-    const {name, price, stock } = producto
+export default function ProductoInCart({ producto }) {
+    const { name, price, stock } = producto
+    
     return (
       <div>
         <h2>{name}</h2>
